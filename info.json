@@ -1,10 +1,10 @@
 {
-  "name": "hover_ghost_builder_2.0.0",
+  "name": "hover_ghost_builder",
   "version": "2.0.0",
   "factorio_version": "2.0",
-  "title": "Hover Ghost Builder",
+  "title": "Pipette Ghost Builder",
   "author": "Thaui",
-  "description": "Automatically mine, fill and builds ghost and requests when hovered",
+  "description": "Automatically mine and builds ghost and fill requests when pipette is used",
   "package": {
     "readme": "README.md",
     "gallery": [

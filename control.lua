@@ -28,20 +28,20 @@ end
 
 
 -- Event for checking and building ghosts
-script.on_event(defines.events.on_selected_entity_changed, function(event)
+script.on_event(defines.events.on_player_pipette, function(event)
     local player = game.get_player(event.player_index)
-
     if not player then return end
     if not get_ghost_builder_enabled(player) then return end
-
     -- Check if the player is hovering over a ghost entity
     local hovered_entity = player.selected
     if not hovered_entity then return end
     if hovered_entity.name == "entity-ghost" then
-        build_entity_ghost(player, hovered_entity)
+        local has_build=build_entity_ghost(player, hovered_entity)
+        if has_build then player.clear_cursor() end
     else
-        fill_request_proxies(player, hovered_entity)
-        mine_entity(player, hovered_entity)
+        local has_fill=fill_request_proxies(player, hovered_entity)
+        local has_mine=mine_entity(player, hovered_entity)
+        if has_fill or has_mine then player.clear_cursor() end
     end
 end)
 

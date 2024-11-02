@@ -51,8 +51,21 @@ local function fill_request_proxy(player, proxy)
       end
     end
   end
-  if changed_removal_plan then proxy.removal_plan = removal_plan end
-  if changed_insert_plan then proxy.insert_plan = insert_plan end
+  if changed_removal_plan then 
+    local new_removal_plan = {}
+    for _, plan in ipairs(removal_plan) do
+      if plan and plan.items then table.insert(new_removal_plan, plan) end
+    end
+    proxy.removal_plan = new_removal_plan 
+  end
+  game.print(serpent.line(insert_plan))
+  if changed_insert_plan then 
+    local new_insert_plan = {}
+    for _, plan in ipairs(insert_plan) do
+      if plan and plan.items then table.insert(new_insert_plan, plan) end
+    end
+    proxy.insert_plan = new_insert_plan 
+  end
 
   local request_count = 0
   for _, plan in ipairs(proxy.removal_plan) do
@@ -64,12 +77,9 @@ local function fill_request_proxy(player, proxy)
   if request_count == 0 then
     proxy.destroy()
   end
-
-  if not changed_removal_plan and not changed_insert_plan then
-    player.play_sound { path = "utility/cannot_build" }
-  else
-    player.play_sound { path = "utility/inventory_move" }
-  end
+  local has_changed = changed_removal_plan or changed_insert_plan
+  player.play_sound { path = has_changed and "utility/inventory_move" or "utility/cannot_build"}
+  return has_changed
 end
 
 --- complete all request proxies of an entity
@@ -80,7 +90,9 @@ return function(player, hovered_entity)
     name = "item-request-proxy",
     position = hovered_entity.position,
   })
+  local has_filled = false
   for _, proxy in ipairs(entities) do
-    fill_request_proxy(player, proxy)
+    if fill_request_proxy(player, proxy) then has_filled = true end
   end
+  return has_filled
 end

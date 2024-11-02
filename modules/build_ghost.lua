@@ -35,7 +35,7 @@ return function(player, hovered_entity)
       if revived and entity then
         transfer.transfer_stack(item, playerInv, nil)
         fill_request_proxies(player, entity)
-        return
+        return true
       end
     end
   end

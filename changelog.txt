@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.1
+Date: 2024-11-02
+  Features:
+    - Use pipette hotkey instead of hovering.
+    - Hand only get something in pipette if it didn't build, mine or fill
+---------------------------------------------------------------------------------------------------
 Version: 2.0.0
 Date: 2024-11-02
   Features:

@@ -7,4 +7,5 @@ return function(player, entity)
   else
     player.play_sound { path = "utility/cannot_build" }
   end
+  return mined
 end
