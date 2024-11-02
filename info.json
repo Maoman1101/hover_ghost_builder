@@ -1,0 +1,19 @@
+{
+  "name": "hover_ghost_builder_2.0.0",
+  "version": "2.0.0",
+  "factorio_version": "2.0",
+  "title": "Hover Ghost Builder",
+  "author": "Thaui",
+  "description": "Automatically mine, fill and builds ghost and requests when hovered",
+  "package": {
+    "readme": "README.md",
+    "gallery": [
+      "gallery/**.png"
+    ],
+    "license": "LICENSE",
+    "sync_portal_details": true
+  },
+  "dependencies": [
+    "base >= 2.0"
+  ]
+}
