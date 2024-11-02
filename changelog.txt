@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.0
-Date: Oct 27, 2024
+Date: 2024-11-02
   Features:
     - Build ghost entity like if you built it manually when you hover over it.
     - Fill or empty entity based on requests from your inventory when you hover over it.
