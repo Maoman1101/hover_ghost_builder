@@ -51,20 +51,19 @@ local function fill_request_proxy(player, proxy)
       end
     end
   end
-  if changed_removal_plan then 
+  if changed_removal_plan then
     local new_removal_plan = {}
     for _, plan in ipairs(removal_plan) do
       if plan and plan.items then table.insert(new_removal_plan, plan) end
     end
-    proxy.removal_plan = new_removal_plan 
+    proxy.removal_plan = new_removal_plan
   end
-  game.print(serpent.line(insert_plan))
-  if changed_insert_plan then 
+  if changed_insert_plan then
     local new_insert_plan = {}
     for _, plan in ipairs(insert_plan) do
       if plan and plan.items then table.insert(new_insert_plan, plan) end
     end
-    proxy.insert_plan = new_insert_plan 
+    proxy.insert_plan = new_insert_plan
   end
 
   local request_count = 0
@@ -78,7 +77,6 @@ local function fill_request_proxy(player, proxy)
     proxy.destroy()
   end
   local has_changed = changed_removal_plan or changed_insert_plan
-  player.play_sound { path = has_changed and "utility/inventory_move" or "utility/cannot_build"}
   return has_changed
 end
 
